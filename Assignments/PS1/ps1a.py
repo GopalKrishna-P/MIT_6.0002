@@ -25,7 +25,13 @@ def load_cows(filename):
     a dictionary of cow name (string), weight (int) pairs
     """
     # TODO: Your code here
-    pass
+    file = open(filename, 'r')
+    cows_dict = {}
+    for line in file:
+        name, weight = line.split(',')
+        cows_dict[name] = int(weight)
+    file.close()
+    return cows_dict
 
 # Problem 2
 def greedy_cow_transport(cows,limit=10):
@@ -51,7 +57,18 @@ def greedy_cow_transport(cows,limit=10):
     trips
     """
     # TODO: Your code here
-    pass
+    sorted_cows = sorted(cows, key=cows.get, reverse=True)
+    result = []
+    while len(sorted_cows) > 0:
+        totalWeight = 0
+        trip = []
+        for name in sorted_cows[:]:
+            if cows[name] + totalWeight <= limit:
+                trip.append(name)
+                totalWeight = totalWeight + cows[name]
+                sorted_cows.remove(name)
+        result.append(trip)
+    return result
 
 # Problem 3
 def brute_force_cow_transport(cows,limit=10):
@@ -76,7 +93,20 @@ def brute_force_cow_transport(cows,limit=10):
     trips
     """
     # TODO: Your code here
-    pass
+    result = []
+    for partition in get_partitions(cows.keys()):
+        score = []
+        for trip in partition:
+            totalWeight = 0
+            for name in trip:
+                totalWeight += cows[name]
+            if totalWeight <= 10:
+                score.append(1)
+            else:
+                score.append(0)
+        if len(partition) == sum(score):
+            result.append(partition)
+    return result
         
 # Problem 4
 def compare_cow_transport_algorithms():
@@ -93,4 +123,56 @@ def compare_cow_transport_algorithms():
     Does not return anything.
     """
     # TODO: Your code here
-    pass
+    cows = load_cows('ps1_cow_data.txt')
+    cows2 = load_cows('ps1_cow_data_2.txt')
+    # greedy
+    print("Running Greedy_cow_transport()")
+    start = time.time()
+    result = greedy_cow_transport(cows)
+    end = time.time()
+    print(f' Execution time for ps1_cow_data.txt was {end - start}.')
+    print(f' Problem was solved within {len(result)} trips.')
+    start = time.time()
+    result = greedy_cow_transport(cows2)
+    end = time.time()
+    print(f' Execution time for ps1_cow_data_2.txt was {end - start}.')
+    print(f' Problem was solved within {len(result)} trips.')
+    # brute force
+    print("Running Brute_force_cow_transport()")
+    start = time.time()
+    result = brute_force_cow_transport(cows)
+    end = time.time()
+    print(f' Execution time for ps1_cow_data.txt was {end - start}.')
+    print(f' Problem was solved within {len(result)} trips.')
+    start = time.time()
+    result = brute_force_cow_transport(cows2)
+    end = time.time()
+    print(f' Execution time for ps1_cow_data_2.txt was {end - start}.')
+    print(f' Problem was solved within {len(result)} trips.')
+
+
+# TESTING CODE for all the functions above.
+if __name__ == '__main__':
+    # problem 1
+    print("begin testing ps1a.py")
+    print("p1-------------------")
+    load_dict = load_cows('ps1_cow_data.txt')
+    print("data loaded via ps1_cow_data.txt")
+    print(load_dict)
+    print("---------------------")
+    cows = load_cows('ps1_cow_data.txt')
+    cows2 = load_cows('ps1_cow_data_2.txt')
+    # problem 2
+    print("p2-------------------")
+    print("result of Greedy_cow_transport()")
+    print(greedy_cow_transport(cows))
+    print("---------------------")
+    # problem 3
+    print("p3-------------------")
+    print("result of Brute_force_cow_transport()")
+    print(brute_force_cow_transport(cows))
+    print("---------------------")
+    # problem 4
+    print("p4-------------------")
+    compare_cow_transport_algorithms()
+
