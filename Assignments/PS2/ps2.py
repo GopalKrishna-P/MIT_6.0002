@@ -19,7 +19,9 @@ from graph import Digraph, Node, WeightedEdge
 # do the graph's edges represent? Where are the distances
 # represented?
 #
-# Answer:
+# Answer: Nodes -> Buildings
+#         edges -> path
+#       weights -> distances
 #
 
 
@@ -42,9 +44,20 @@ def load_map(map_filename):
     Returns:
         a Digraph representing the map
     """
-
-    # TODO
-    print("Loading map from file...")
+    file = open(map_filename, 'r')
+    graph = Digraph()
+    for line in file:
+        source_node, dest_node, total_distance, outdoor_distance = line.split(' ')
+        source = Node(source_node)
+        dest = Node(dest_node)
+        edge = WeightedEdge(source, dest, int(total_distance), int(outdoor_distance))
+        if not graph.has_node(source):
+            graph.add_node(source)
+        if not graph.has_node(dest):
+            graph.add_node(dest)
+        graph.add_edge(edge)
+    file.close()
+    return graph
 
 # Problem 2c: Testing load_map
 # Include the lines used to test load_map below, but comment them out
@@ -95,8 +108,27 @@ def get_best_path(digraph, start, end, path, max_dist_outdoors, best_dist,
         If there exists no path that satisfies max_total_dist and
         max_dist_outdoors constraints, then return None.
     """
-    # TODO
-    pass
+    ######
+    if start == end:
+        return (path[0], path[1])
+
+    startNode = Node(start)
+    endNode = Node(end)
+    newPath = [path[0][:], path[1], path[2]]
+    if startNode not in digraph.nodes or endNode not in digraph.nodes:
+        raise ValueError
+    else:
+        for edge in digraph.edges[startNode]:
+            newPath[1] = path[1] + int(edge.get_total_distance())
+            newPath[2] = path[2] + int(edge.get_outdoor_distance())
+            if path[0].count(edge.get_destination().get_name()) < 1 and newPath[1] <= best_dist and newPath[2] <= max_dist_outdoors:
+                newPath[0].append(edge.get_destination().get_name())
+                traversed_best_path, traversed_best_dist = get_best_path(digraph, edge.get_destination().get_name(), end, newPath, max_dist_outdoors, best_dist, best_path)
+                if traversed_best_dist < best_dist:
+                    best_dist = traversed_best_dist
+                    best_path = traversed_best_path
+                newPath = [path[0][:], path[1], path[2]]
+    return best_path, best_dist
 
 
 # Problem 3c: Implement directed_dfs
@@ -128,8 +160,11 @@ def directed_dfs(digraph, start, end, max_total_dist, max_dist_outdoors):
         If there exists no path that satisfies max_total_dist and
         max_dist_outdoors constraints, then raises a ValueError.
     """
-    # TODO
-    pass
+    best_path, best_dist  = get_best_path(digraph, start, end,[[start], 0, 0], max_dist_outdoors, max_total_dist, [])
+    print('debug: {}->{}'.format(best_path, best_dist))
+    if best_path == None or len(best_path) == 0 or best_dist > max_total_dist:
+        raise ValueError
+    return best_path
 
 
 # ================================================================
