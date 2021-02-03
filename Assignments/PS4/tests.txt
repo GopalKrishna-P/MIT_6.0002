@@ -1,0 +1,12 @@
+$ python ps4_tests.py 
+test_calc_95_ci (__main__.ps4_calc) ... 6.653904117133038
+ok
+test_calc_pop_avg (__main__.ps4_calc) ... 762.5
+ok
+test_calc_pop_std (__main__.ps4_calc) ... 10.735455276791944
+ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK
