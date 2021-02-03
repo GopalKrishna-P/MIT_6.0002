@@ -1,0 +1,90 @@
+$ python ps3_tests_f16.py              
+test_clean_tile_at_position_PosToPos (__main__.ps3_P1A)
+Test if clean_tile_at_position removes all dirt ... ok
+test_clean_tile_at_position_PosToZero (__main__.ps3_P1A)
+Test if clean_tile_at_position removes all dirt ... ok
+test_clean_tile_at_position_ZeroToZero (__main__.ps3_P1A)
+Test if clean_tile_at_position removes all dirt ... ok
+test_get_num_cleaned_tiles_FullIn1 (__main__.ps3_P1A)
+Test get_num_cleaned_tiles for cleaning subset of room completely with 1 call ... ok
+test_get_num_cleaned_tiles_FullIn2 (__main__.ps3_P1A)
+Test get_num_cleaned_tiles for cleaning subset of room in two calls ... ok
+test_get_num_cleaned_tiles_OverClean (__main__.ps3_P1A)
+Test cleaning already clean tiles does not increment counter ... ok
+test_get_num_cleaned_tiles_Partial (__main__.ps3_P1A)
+Test get_num_cleaned_tiles for cleaning subset of room incompletely ... ok
+test_is_position_in_room (__main__.ps3_P1A)
+Test is_position_in_room ... ok
+test_is_tile_cleaned_clean (__main__.ps3_P1A)
+Test is_tile_cleaned ... ok
+test_is_tile_cleaned_dirty (__main__.ps3_P1A)
+Test is_tile_cleaned ... ok
+test_room_dirt_clean (__main__.ps3_P1A) ... ok
+test_room_dirt_dirty (__main__.ps3_P1A) ... ok
+test_unimplemented_methods (__main__.ps3_P1A)
+Test if student implemented methods in RectangularRoom abstract class that should not be implemented ... ok
+test_getset_robot_direction (__main__.ps3_P1B)
+Test get_robot_direction and set_robot_direction ... ok
+test_unimplemented_methods (__main__.ps3_P1B)
+Test if student implemented methods in Robot abstract class that should not be implemented ... ok
+test_get_num_tiles (__main__.ps3_P2_ER)
+test get_num_tiles method ... ok
+test_get_random_position (__main__.ps3_P2_ER)
+Test get_random_position ... ok
+test_is_position_valid (__main__.ps3_P2_ER)
+Test is_position_valid ... ok
+test_get_num_tiles (__main__.ps3_P2_FR)
+test get_num_tiles method ... ok
+test_get_random_position (__main__.ps3_P2_FR)
+Test get_random_position for FurnishedRoom ... ok
+test_is_position_furnished (__main__.ps3_P2_FR)
+test_is_position_furnished ... ok
+test_is_position_valid (__main__.ps3_P2_FR)
+Test is_position_valid ... ok
+test_is_tile_furnished (__main__.ps3_P2_FR)
+test is_tile_furnished ... ok
+testRobot (__main__.ps3_P3)
+Test StandardRobot ... ok
+test_BoundaryConditions (__main__.ps3_P3)
+Test strict inequalities in random positions for the EmptyRoom and StandardRobot ... ok
+test_update_position_and_cleanStandardRobot (__main__.ps3_P3)
+Test StandardRobot.update_position_and_clean ... ok
+testSimulation1 (__main__.ps3_P5_Standard)
+Test cleaning 100% of a 5x5 room ... ok
+testSimulation10 (__main__.ps3_P5_Standard)
+Test multiple robots (95% of a 10x10 room with 5 robots (Standard Robot)) capacity = 2, 6 dirt/tile ... ok
+testSimulation11 (__main__.ps3_P5_Standard)
+Test multiple robots and different speeds (90% of a 5x5 room with 3 robots of speed 0.5 ... ok
+testSimulation2 (__main__.ps3_P5_Standard)
+Test cleaning 75% of a 10x10 room (Standard Robot) ... ok
+testSimulation3 (__main__.ps3_P5_Standard)
+Test cleaning 90% of a 10x10 room (Standard Robot) ... ok
+testSimulation4 (__main__.ps3_P5_Standard)
+Test multiple robots (95% of a 20x20 room with 5 robots (Standard Robot)) ... ok
+testSimulation5 (__main__.ps3_P5_Standard)
+Test different speeds (90% of a 5x20 room with a robot of speed 0.2 (Standard Robot)) ... ok
+testSimulation6 (__main__.ps3_P5_Standard)
+Test multiple robots and different speeds (90% of a 10x10 room with 3 robots of speed 0.5 (Standard Robot)) ... ok
+testSimulation7 (__main__.ps3_P5_Standard)
+Test cleaning 100% of a 5x5 room (Standard Robot, 5 dirt/tile, capcity = 3) ... ok
+testSimulation8 (__main__.ps3_P5_Standard)
+Test cleaning 100% of a 5x5 room (Standard Robot, 6 dirt/tile, capacity = 3) ... ok
+testSimulation9 (__main__.ps3_P5_Standard)
+Test different speeds (90% of a 3x10 room with a robot of speed 0.2 (Standard Robot)), ... ok
+testSimulation1 (__main__.ps3_P5_Faulty)
+Test cleaning 100% of a 5x5 room with FaultyRobot ... ok
+testSimulation2 (__main__.ps3_P5_Faulty)
+Test cleaning 75% of a 10x10 room with FaultyRobot ... ok
+testSimulation3 (__main__.ps3_P5_Faulty)
+Test cleaning 90% of a 10x10 room with FaultyRobot ... ok
+testSimulation4 (__main__.ps3_P5_Faulty)
+Test cleaning 100% of a 5x5 room with FaultyRobot ... ok
+testSimulation5 (__main__.ps3_P5_Faulty)
+Test cleaning 75% of a 10x10 room with FaultyRobot ... ok
+testSimulation6 (__main__.ps3_P5_Faulty)
+Test cleaning 90% of a 10x10 room with FaultyRobot ... ok
+
+----------------------------------------------------------------------
+Ran 43 tests in 59.535s
+
+OK
