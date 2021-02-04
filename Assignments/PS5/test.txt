@@ -1,0 +1,16 @@
+  $ python ps5_test.py
+test_gen_cities_avg (__main__.TestPS5) ... ok
+test_gen_std_devs (__main__.TestPS5) ... ok
+test_generate_models (__main__.TestPS5) ... /Users/goppen/Developer/Education/MIT_6002/Assignments/PS5/ps5.py:167: RankWarning: Polyfit may be poorly conditioned
+  return [pylab.polyfit(x, y, degree) for degree in degs]
+ps5_test.py:46: RankWarning: Polyfit may be poorly conditioned
+  self.assertListEqual(list(models[i]), list(pylab.polyfit(x,y, degrees[i])), coefficient_mismatch)
+ok
+test_moving_avg (__main__.TestPS5) ... ok
+test_r_squared (__main__.TestPS5) ... ok
+test_rmse (__main__.TestPS5) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 5.896s
+
+OK
